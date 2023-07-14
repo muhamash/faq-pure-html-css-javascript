@@ -34,7 +34,7 @@
       var fn = hasClass( elem, c ) ? removeClass : addClass;
       fn( elem, c );
     }
-    var classie = {
+    var classObjects = {
       hasClass: hasClass,
       addClass: addClass,
       removeClass: removeClass,
@@ -45,9 +45,9 @@
       toggle: toggleClass
     };
     if ( typeof define === 'function' && define.amd ) {
-      define( classie );
+      define( classObjects );
     } else {
-      window.classie = classie;
+      window.classObjects = classObjects;
     }
     })( window );
     var $ = function(selector){
@@ -64,17 +64,17 @@
             if(classes[x] == "accordionTitle") {
               var title = e.target;
               var content = e.target.parentNode.nextElementSibling;
-              classie.toggle(title, 'accordionTitleActive');
-              if(classie.has(content, 'accordionItemCollapsed')) {
-                if(classie.has(content, 'animateOut')){
-                  classie.remove(content, 'animateOut');
+              classObjects.toggle(title, 'accordionTitleActive');
+              if(classObjects.has(content, 'accordionItemCollapsed')) {
+                if(classObjects.has(content, 'animateOut')){
+                  classObjects.remove(content, 'animateOut');
                 }
-                classie.add(content, 'animateIn');
+                classObjects.add(content, 'animateIn');
               }else{
-                 classie.remove(content, 'animateIn');
-                 classie.add(content, 'animateOut');
+                 classObjects.remove(content, 'animateIn');
+                 classObjects.add(content, 'animateOut');
               }
-              classie.toggle(content, 'accordionItemCollapsed');      
+              classObjects.toggle(content, 'accordionItemCollapsed');      
             }
           }
         }  
